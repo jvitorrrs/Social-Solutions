@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Social_Solutions.Models.Imoveis>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-white">
+    <h3 class="display-4 text-end">Adicionados Recentemente</h3>
+    <hr />
+</div>
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+        <div class="div-movie-container d-flex flex-column justify-content-between mb-5">
+            <div class="movie-div text-white text-center">
+                <a asp-action="Details" asp-route-id="@item.Id_Imovel">
+                    <div class="mt-2">
+                        <h4>@Html.DisplayFor(modelItem => item.Valor)</h4>
+                    </div>
+                    <div class="mt-2">
+                        <h4>@Html.DisplayFor(modelItem => item.Tipo_Negocio)</h4>
+                    </div>
+                    <div>
+                        <p>@Html.DisplayFor(modelItem => item.Descricao)</p>
+                    </div>
+                </a>
+            </div> 
+        </div>
+    }
+
+}
+else
+{
+    <p class="text-end text-white">Nenhum imóvel adicionado</p>
+}
+
+

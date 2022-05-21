@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Social_Solutions.Models.Imoveis>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="div-imovel-table">
+    <p>
+    <a asp-action="Create" class="bg-white text-dark p-2 rounded">Create New</a>
+</p>
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th style="word-wrap: break-word;min-width: 160px;max-width: 160px;">
+                Tipo de Negócio
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                Ativo
+            </th>
+            <th>
+                Associado á
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="word-wrap: break-word;min-width: 160px;max-width: 160px;">
+                @Html.DisplayFor(modelItem => item.Tipo_Negocio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imovel_Ativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Cliente)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Imovel">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Imovel">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Imovel, @item.Id_Cliente">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
